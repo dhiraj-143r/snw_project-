@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maven - Evidence-based Women's and Family Healthcare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        
+        /* Container and Spacing System */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-sm {
+            padding: 60px 0;
+        }
+        
+        .section-lg {
+            padding: 100px 0;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        
+        h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            color: #4a4a4a;
+        }
+        
+        /* Header */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #1a5c3a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+        
+        nav ul li a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+        
+        nav ul li a:hover {
+            background-color: #e8f5f0;
+            color: #1a5c3a;
+            transform: translateY(-2px);
+        }
+        
+        .nav-cta {
+            background-color: #1a5c3a;
+            color: #ffffff !important;
+            padding: 12px 24px !important;
+        }
+        
+        .nav-cta:hover {
+            background-color: #0f3924 !important;
+            color: #ffffff !important;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #1a5c3a;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-menu-toggle:hover {
+            background-color: #e8f5f0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a5c3a 0%, #2d7a4d 100%);
+            color: #ffffff;
+            padding: 140px 0 100px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            font-size: 1.05rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-primary {
+            background-color: #ffffff;
+            color: #1a5c3a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #ffffff;
+            color: #1a5c3a;
+            transform: translateY(-3px);
+        }
+        
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background-color: #4caf50;
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.1;
+            }
+        }
+        
+        /* Platform Section */
+        .platform {
+            background-color: #f8f9fa;
+            position: relative;
+        }
+        
+        .platform-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .platform-image {
+            position: relative;
+        }
+        
+        .platform-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .platform-image:hover img {
+            transform: scale(1.02);
+        }
+        
+        .platform-badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .platform-content h2 {
+            color: #1a5c3a;
+            margin-bottom: 32px;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-item {
+            margin-bottom: 32px;
+            padding: 24px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .feature-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .feature-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1a5c3a;
+            line-height: 1;
+            min-width: 50px;
+            text-align: center;
+        
+        }
+        
+        .feature-text h3 {
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .feature-text p {
+            color: #757575;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+        
+        /* Media Section */
+        .media {
+            background-color: #ffffff;
+        }
+        
+        .media-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .media-header h2 {
+            color: #1a5c3a;
+            margin-bottom: 16px;
+        }
+        
+        .media-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .media-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        
+        .media-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .media-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #1a5c3a, #4caf50);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .media-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .media-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            border-color: transparent;
+        }
+        
+        .media-source {
+            font-weight: 700;
+            color: #1a5c3a;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .media-source::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: #4caf50;
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+        
+        .media-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        
+        .media-card p {
+            color: #757575;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        
+        .media-link {
+            color: #1a5c3a;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .media-link:hover {
+            gap: 12px;
+            color: #0f3924;
+        }
+        
+        /* Family Gallery Section */
+        .family-gallery {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .gallery-header h2 {
+            color: #1a5c3a;
+            margin-bottom: 16px;
+        }
+        
+        .gallery-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: #ffffff;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-caption h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .gallery-caption p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #1a5c3a 0%, #2d7a4d 100%);
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .cta-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+        
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+        }
+        
+        .cta .btn-primary {
+            background-color: #ffffff;
+            color: #1a5c3a;
+            font-size: 1.1rem;
+            padding: 18px 40px;
+        }
+        
+        .cta .btn-primary:hover {
+            background-color: #e8f5f0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #4caf50;
+            border-radius: 2px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            position: relative;
+        }
+        
+        .footer-column ul li a::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ffffff;
+            padding-left: 8px;
+        }
+        
+        .footer-column ul li a:hover::before {
+            opacity: 1;
+            left: -15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.2rem;
+        }
+        
+        .social-icons a:hover {
+            background-color: #4caf50;
+            transform: translateY(-4px);
+        }
+        
+        .app-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .app-buttons a {
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .app-buttons a:hover {
+            transform: scale(1.05);
+        }
+        
+        .app-buttons img {
+            height: 48px;
+            border-radius: 8px;
+        }
+        
+        .newsletter {
+            margin-top: 24px;
+        }
+        
+        .newsletter h3 {
+            margin-bottom: 16px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            background: transparent;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            padding: 14px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #1a5c3a;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .copyright a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin: 0 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .copyright a:hover {
+            color: #ffffff;
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #1a5c3a;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background-color: #0f3924;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .platform-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .platform-image {
+                order: 2;
+            }
+            
+            .platform-content {
+                order: 1;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                border-radius: 0 0 16px 16px;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                width: 100%;
+                padding: 16px 20px;
+            }
+            
+            .nav-cta {
+                background-color: #1a5c3a !important;
+                color: #ffffff !important;
+                margin-top: 8px;
+            }
+            
+            .btn-group {
+                justify-content: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .media-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .app-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    MAVEN
+                </a>
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="platform.html" class="">Platform</a></li>
+                        <li><a href="media.html" class="active">Media</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="about.html" class="">About</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                    </div>
+                    <h1>Evidence-based women's and family healthcare</h1>
+                    <p>Expert care across every life stage, from fertility to menopause and everything in between.</p>
+                    <div class="btn-group">
+                        <a href="" class="btn btn-primary">
+
+                            Get a demo
+                        </a>
+                        <a href="" class="btn btn-secondary">
+                            Explore solutions
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/6f6684ed-4c2d-43a7-ab1a-520e6dfdb099.png?auth_key=1868539174-0dab002aacf847928c1189d53255ec41-0-a232ab14ac1fde208910b3edc12953a3" alt="Family healthcare">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Section -->
+    <section class="platform section" id="platform">
+        <div class="container">
+            <div class="platform-container">
+                <div class="platform-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/cfb4c921-61d2-4303-8985-dee760d09c67.png?auth_key=1868539174-8fbb149099dd41fbaf4e2de24e3ed535-0-a07f72ae3384e949b3138b7b9e171d8c" alt="Mother and baby care">
+
+                </div>
+                <div class="platform-content">
+                    <h2>An end-to-end platform supporting members worldwide</h2>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-number">01</div>
+                            <div class="feature-text">
+                                <h3>Unparalleled access</h3>
+                                <p>Connect with 30,000+ healthcare professionals anytime, anywhere in the world through our secure platform.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-number">02</div>
+                            <div class="feature-text">
+                                <h3>Aligned benefit management</h3>
+                                <p>Seamlessly integrate with existing healthcare benefits and insurance plans for a unified experience.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-number">03</div>
+                            <div class="feature-text">
+                                <h3>Health equity on a global scale</h3>
+                                <p>Ensure quality care is accessible to all, regardless of location, background, or circumstances.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-number">04</div>
+                            <div class="feature-text">
+                                <h3>Improved outcomes and costs</h3>
+                                <p>Achieve 40% better health outcomes while reducing overall healthcare expenses by 30%.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Section -->
+    <section class="media section" id="media">
+        <div class="container">
+            <div class="media-header">
+                <h2>Stay in the know</h2>
+                <p>Follow Maven's journey as we tackle global women's and family health challenges</p>
+            </div>
+            <div class="media-cards">
+                <div class="media-card">
+                    <div class="media-source">Reuters</div>
+                    <h3 class="media-title">Women's health startup Maven raises $1.7 billion in funding round</h3>
+                    <p>The company's latest funding round values Maven at $1.35 billion as demand for fertility benefits grows nationwide.</p>
+                    <a href="#" class="media-link">
+                        Keep reading
+                       
+                    </a>
+                </div>
+                <div class="media-card">
+                    <div class="media-source">TechCrunch</div>
+                    <h3 class="media-title">Maven valued at $1.35B to address nationwide fertility benefits demand</h3>
+                    <p>The digital health platform continues to expand its services to meet growing needs for comprehensive family healthcare.</p>
+                    <a href="#" class="media-link">
+                        Keep reading
+                       
+                    </a>
+                </div>
+                <div class="media-card">
+                    <div class="media-source">CNBC</div>
+                    <h3 class="media-title">Maven raises $90M in post-Roe v. Wade era</h3>
+                    <p>The women's health platform secures funding to expand services in response to changing healthcare landscape.</p>
+                    <a href="#" class="media-link">
+                        Keep reading
+                       
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Gallery Section -->
+    <section class="family-gallery section" id="gallery">
+        <div class="container">
+            <div class="gallery-header">
+                <h2>Family Moments</h2>
+                <p>Celebrating the diverse families we support on their healthcare journeys</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/53456084-a163-4427-b29b-f681abe1dd3e.png?auth_key=1868539174-80f6b17cebbb4d37a80c70fca470e459-0-6300f62e934bd17ad1a0e33e8e3ffb26" alt="Expecting parents">
+                   
+                </div>
+                <div class="gallery-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/ee3569b9-ddfe-49c2-aa9b-0e7f58a65817.png?auth_key=1868539174-7fda9a87d2ff41309ef8eb184b335022-0-dcea140f30c73a79b8ae429d9805d231" alt="Father and child drawing">
+                  
+                </div>
+                <div class="gallery-item">
+                    <img src="https://z-cdn-media.chatglm.cn/files/9e9cede1-d36d-43cd-a5fe-fcebe94d86bd.png?auth_key=1868539174-ddfbd0aadd014b64ae300cc1eec52c01-0-b2df484be4320edd771d4b2916b935af" alt="Family time">
+                  
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section">
+        <div class="container cta-container">
+            <h2>Take the next step</h2>
+            <p>Let's talk about how we can work together to make healthcare work for all of us.</p>
+            <a href="#" class="btn btn-primary">
+                Request a demo
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Join Maven</h3>
+                    <ul>
+                        <li><a href="#">For Individuals</a></li>
+                        <li><a href="#">For Employers</a></li>
+                        <li><a href="#">For Health Plans</a></li>
+                        <li><a href="#">For Providers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Maven Programs</h3>
+                    <ul>
+                        <li><a href="#">Fertility & Family Building</a></li>
+                        <li><a href="#">Maternity & Parenting</a></li>
+                        <li><a href="#">Pediatrics</a></li>
+                        <li><a href="#">Menopause & Midlife</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Resource Library</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="copyright">
+                
+                <p>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>

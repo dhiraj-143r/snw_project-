@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Maven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        
+        /* Container and Spacing System */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-sm {
+            padding: 60px 0;
+        }
+        
+        .section-lg {
+            padding: 100px 0;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        
+        h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            color: #4a4a4a;
+        }
+        
+        /* Header */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #1a5c3a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+        
+        nav ul li a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+        
+        nav ul li a:hover {
+            background-color: #e8f5f0;
+            color: #1a5c3a;
+            transform: translateY(-2px);
+        }
+        
+        nav ul li a.active {
+            background-color: #e8f5f0;
+            color: #1a5c3a;
+        }
+        
+        .nav-cta {
+            background-color: #1a5c3a;
+            color: #ffffff !important;
+            padding: 12px 24px !important;
+        }
+        
+        .nav-cta:hover {
+            background-color: #0f3924 !important;
+            color: #ffffff !important;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #1a5c3a;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-menu-toggle:hover {
+            background-color: #e8f5f0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a5c3a 0%, #2d7a4d 100%);
+            color: #ffffff;
+            padding: 140px 0 100px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            font-size: 1.05rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-primary {
+            background-color: #ffffff;
+            color: #1a5c3a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        /* Story Section */
+        .story {
+            background-color: #f8f9fa;
+        }
+        
+        .story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .story-image {
+            position: relative;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .story-content h2 {
+            color: #1a5c3a;
+            margin-bottom: 32px;
+        }
+        
+        /* Approach Section */
+        .approach {
+            background-color: #ffffff;
+        }
+        
+        .approach-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .approach-header h2 {
+            color: #1a5c3a;
+            margin-bottom: 16px;
+        }
+        
+        .approach-header p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .approach-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .approach-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #1a5c3a, #4caf50);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .approach-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .approach-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .approach-icon {
+            font-size: 3rem;
+            color: #1a5c3a;
+            margin-bottom: 24px;
+        }
+        
+        .approach-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }
+        
+        /* Impact Section */
+        .impact {
+            background-color: #f8f9fa;
+        }
+        
+        .impact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .impact-content h2 {
+            color: #1a5c3a;
+            margin-bottom: 32px;
+        }
+        
+        .impact-image {
+            position: relative;
+        }
+        
+        .impact-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .testimonial {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 100px;
+            color: #e8f5f0;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #1a5c3a;
+        }
+        
+        /* Team Section */
+        .team {
+            background-color: #ffffff;
+        }
+        
+        .team-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .team-header h2 {
+            color: #1a5c3a;
+            margin-bottom: 16px;
+        }
+        
+        .team-header p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background-color: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            padding: 24px;
+        }
+        
+        .team-info h3 {
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .team-info p {
+            color: #4a4a4a;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+        
+        .team-social {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .team-social a {
+            width: 36px;
+            height: 36px;
+            background-color: #e8f5f0;
+            color: #1a5c3a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .team-social a:hover {
+            background-color: #1a5c3a;
+            color: #ffffff;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #4caf50;
+            border-radius: 2px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            position: relative;
+        }
+        
+        .footer-column ul li a::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ffffff;
+            padding-left: 8px;
+        }
+        
+        .footer-column ul li a:hover::before {
+            opacity: 1;
+            left: -15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.2rem;
+        }
+        
+        .social-icons a:hover {
+            background-color: #4caf50;
+            transform: translateY(-4px);
+        }
+        
+        .app-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .app-buttons a {
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .app-buttons a:hover {
+            transform: scale(1.05);
+        }
+        
+        .app-buttons img {
+            height: 48px;
+            border-radius: 8px;
+        }
+        
+        .newsletter {
+            margin-top: 24px;
+        }
+        
+        .newsletter h3 {
+            margin-bottom: 16px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            background: transparent;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            padding: 14px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #1a5c3a;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .copyright a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin: 0 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .copyright a:hover {
+            color: #ffffff;
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #1a5c3a;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background-color: #0f3924;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .story-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .impact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                border-radius: 0 0 16px 16px;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                width: 100%;
+                padding: 16px 20px;
+            }
+            
+            .nav-cta {
+                background-color: #1a5c3a !important;
+                color: #ffffff !important;
+                margin-top: 8px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .app-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="index.html" class="logo">
+                    
+                    MAVEN
+                </a>
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="platform.html">Platform</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="about.html" class="active">About</a></li>
+                    
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Care that's always there, for you and your family</h1>
+                    <p>Maven is the leading digital health platform for women's and family health, providing expert care across every life stage.</p>
+                    <a href="#story" class="btn btn-primary">
+                        Learn our story
+                    
+                    </a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/03ae55e6-a4ec-4703-b7cf-203e3288fe7e.png?auth_key=1868542072-34bb0b49789b4096b90699fac72ad5ab-0-2429deb07393cd729d1a151be613a8d5" alt="Pregnant Couple">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story section" id="story">
+        <div class="container">
+            <div class="story-container">
+                <div class="story-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/856967f7-0550-4e0e-8a72-f4e66fcf4762.png?auth_key=1868542072-bb0bbac952a64ef28cacd8a6145e1fcb-0-899b3b6207d969a516526d90be1e39f6" alt="Family in Park">
+                </div>
+                <div class="story-content">
+                    <h2>Whether you're planning or raising a family, we're here for you</h2>
+                    <p>Maven was founded in 2014 with a simple mission: to transform healthcare for women and families worldwide. We recognized a critical gap in the healthcare system – a lack of specialized, accessible, and comprehensive care for women's health needs.</p>
+                    <p>What started as a platform connecting women with fertility experts has grown into the world's largest digital health platform for women's and family health, serving millions of members across 175+ countries.</p>
+                    <p>Maven is for everyone – regardless of your family structure, background, or healthcare journey. We're committed to providing inclusive care that meets you where you are.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach section" id="approach">
+        <div class="container">
+            <div class="approach-header">
+                <h2>Maven completes your care team</h2>
+                <p>Everything you need between visits to get peace of mind</p>
+            </div>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-icon">
+                        
+                    </div>
+                    <h3>Care Advocates</h3>
+                    <p>Our dedicated Care Advocates are available 24/7 to answer your questions, guide you through your healthcare journey, and connect you with the right specialists.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon">
+                        
+                    </div>
+                    <h3>30+ Specialties</h3>
+                    <p>Access a network of 30,000+ healthcare providers across 30+ specialties, from fertility and pregnancy to pediatrics and menopause.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon">
+                        
+                    </div>
+                    <h3>Community Support</h3>
+                    <p>Connect with others on similar healthcare journeys through our moderated community forums and group sessions led by healthcare professionals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact section" id="impact">
+        <div class="container">
+            <div class="impact-container">
+                <div class="impact-content">
+                    <h2>Maven members experience life changing moments</h2>
+                    <p>Since our founding, Maven has helped millions of people navigate their healthcare journeys with confidence and support. Our impact extends beyond individual health outcomes to create systemic change in how women's and family healthcare is delivered.</p>
+                    <p>Through our platform, we've reduced maternity complications by 25%, increased fertility success rates by 30%, and helped members save an average of $2,500 per year on healthcare costs.</p>
+                    <div class="testimonial">
+                        <p class="testimonial-text">"When my baby was born prematurely and spent weeks in the NICU, my Maven care advocate was there for me every step of the way. They connected me with specialists, answered my questions at 3 AM, and provided emotional support when I needed it most."</p>
+                        <p class="testimonial-author">- Sarah, Maven Member</p>
+                    </div>
+                </div>
+                <div class="impact-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/82a78af8-e11e-4d62-bcc6-8fbdf9f07f34.png?auth_key=1868542072-92f06607f3724622baefe6189ba293d1-0-2dc5afb23b53c4d38e784f44ab57d1f0" alt="Medical Examination">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team section" id="team">
+        <div class="container">
+            <div class="team-header">
+                <h2>Our Expert Team</h2>
+                <p>Meet the healthcare professionals who make Maven possible</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://z-cdn-media.chatglm.cn/files/2db0aae6-9b2c-4a6d-b101-5d2970c7dbdf.png?auth_key=1868542072-9964ed00d3e8401cac5d9dc10def8223-0-d6403ce0b44b522d948605bb02843a06" alt="Medical Team">
+                    <div class="team-info">
+                        <h3>Dr. Emily Chen</h3>
+                        <p>Chief Medical Officer</p>
+                       
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://z-cdn-media.chatglm.cn/files/551a03ed-b65f-48ad-bbf9-ef64c5c3a050.png?auth_key=1868542072-6fcba95c07b646a998c377e260d8e7f8-0-c79e44906f13a67b4331ef02aae3acdc" alt="Medical Procedure">
+                    <div class="team-info">
+                        <h3>Dr. Michael Rodriguez</h3>
+                        <p>Head of Fertility Services</p>
+                        
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://z-cdn-media.chatglm.cn/files/ef1eeb23-6a79-4467-9287-381b53f9bf8e.png?auth_key=1868542072-e73ed17c26a443ea80a9c125887eccff-0-b5b161985e31901d8361acf8ffb59655" alt="Family Care">
+                    <div class="team-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p>Director of Maternity Care</p>
+                       
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://z-cdn-media.chatglm.cn/files/03ae55e6-a4ec-4703-b7cf-203e3288fe7e.png?auth_key=1868542072-34bb0b49789b4096b90699fac72ad5ab-0-2429deb07393cd729d1a151be613a8d5" alt="Pregnancy Care">
+                    <div class="team-info">
+                        <h3>Dr. James Williams</h3>
+                        <p>Pediatrics Lead</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Join Maven</h3>
+                    <ul>
+                        <li><a href="#">For Individuals</a></li>
+                        <li><a href="#">For Employers</a></li>
+                        <li><a href="#">For Health Plans</a></li>
+                        <li><a href="#">For Providers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Maven Programs</h3>
+                    <ul>
+                        <li><a href="#">Fertility & Family Building</a></li>
+                        <li><a href="#">Maternity & Parenting</a></li>
+                        <li><a href="#">Pediatrics</a></li>
+                        <li><a href="#">Menopause & Midlife</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Resource Library</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="copyright">
+    
+                <p>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    </button>
+
+    
+</body>
+</html>

@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maven Platform - Transforming Women's and Family Healthcare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        
+        /* Container and Spacing System */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-sm {
+            padding: 60px 0;
+        }
+        
+        .section-lg {
+            padding: 100px 0;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        
+        h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            color: #4a4a4a;
+        }
+        
+        /* Header */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #1a5c3a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+        
+        nav ul li a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+        
+        nav ul li a:hover {
+            background-color: #e8f5f0;
+            color: #1a5c3a;
+            transform: translateY(-2px);
+        }
+        
+        .nav-cta {
+            background-color: #1a5c3a;
+            color: #ffffff !important;
+            padding: 12px 24px !important;
+        }
+        
+        .nav-cta:hover {
+            background-color: #0f3924 !important;
+            color: #ffffff !important;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #1a5c3a;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-menu-toggle:hover {
+            background-color: #e8f5f0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a5c3a 0%, #2d7a4d 100%);
+            color: #ffffff;
+            padding: 140px 0 100px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            font-size: 1.05rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-primary {
+            background-color: #ffffff;
+            color: #1a5c3a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #ffffff;
+            color: #1a5c3a;
+            transform: translateY(-3px);
+        }
+        
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        /* Statistics Section */
+        .stats {
+            background-color: #f8f9fa;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .stats-image {
+            position: relative;
+        }
+        
+        .stats-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .stats-content h2 {
+            color: #1a5c3a;
+            margin-bottom: 32px;
+        }
+        
+        .stat-item {
+            margin-bottom: 32px;
+            padding: 24px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a5c3a;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .stat-text {
+            color: #4a4a4a;
+            font-size: 1.1rem;
+        }
+        
+        .stat-source {
+            font-size: 0.9rem;
+            color: #757575;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            background-color: #ffffff;
+        }
+        
+        .benefits-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .benefits-image {
+            position: relative;
+        }
+        
+        .benefits-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .benefits-content h2 {
+            color: #1a5c3a;
+            margin-bottom: 32px;
+        }
+        
+        .benefits-content p {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+        }
+        
+        .benefit-list {
+            list-style: none;
+        }
+        
+        .benefit-item {
+            margin-bottom: 24px;
+            padding: 20px;
+            background-color: #e8f5f0;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .benefit-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-item h3 {
+            color: #1a5c3a;
+            margin-bottom: 8px;
+        }
+        
+        .benefit-item p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+        
+        /* Impact Section */
+        .impact {
+            background-color: #f8f9fa;
+        }
+        
+        .impact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .impact-image {
+            position: relative;
+        }
+        
+        .impact-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .impact-content h2 {
+            color: #1a5c3a;
+            margin-bottom: 32px;
+        }
+        
+        .impact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+        }
+        
+        .impact-list {
+            list-style: none;
+        }
+        
+        .impact-item {
+            margin-bottom: 20px;
+            padding: 16px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        
+        .impact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .impact-icon {
+            font-size: 1.5rem;
+            color: #1a5c3a;
+            margin-top: 2px;
+        }
+        
+        .impact-text {
+            flex: 1;
+        }
+        
+        .impact-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+        
+        .impact-text p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #1a5c3a 0%, #2d7a4d 100%);
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .cta-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+        
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+        }
+        
+        .cta .btn-primary {
+            background-color: #ffffff;
+            color: #1a5c3a;
+            font-size: 1.1rem;
+            padding: 18px 40px;
+        }
+        
+        .cta .btn-primary:hover {
+            background-color: #e8f5f0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #4caf50;
+            border-radius: 2px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            position: relative;
+        }
+        
+        .footer-column ul li a::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ffffff;
+            padding-left: 8px;
+        }
+        
+        .footer-column ul li a:hover::before {
+            opacity: 1;
+            left: -15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.2rem;
+        }
+        
+        .social-icons a:hover {
+            background-color: #4caf50;
+            transform: translateY(-4px);
+        }
+        
+        .app-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .app-buttons a {
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .app-buttons a:hover {
+            transform: scale(1.05);
+        }
+        
+        .app-buttons img {
+            height: 48px;
+            border-radius: 8px;
+        }
+        
+        .newsletter {
+            margin-top: 24px;
+        }
+        
+        .newsletter h3 {
+            margin-bottom: 16px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            background: transparent;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            padding: 14px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #1a5c3a;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .copyright a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin: 0 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .copyright a:hover {
+            color: #ffffff;
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #1a5c3a;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background-color: #0f3924;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .benefits-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .impact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                border-radius: 0 0 16px 16px;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                width: 100%;
+                padding: 16px 20px;
+            }
+            
+            .nav-cta {
+                background-color: #1a5c3a !important;
+                color: #ffffff !important;
+                margin-top: 8px;
+            }
+            
+            .btn-group {
+                justify-content: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .app-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    MAVEN
+                </a>
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="platform.html" class="">Platform</a></li>
+                        <li><a href="media.html" class="active">Media</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="about.html" class="active">About</a></li>
+                       
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Transforming women's and family healthcare for employees everywhere</h1>
+                    <p>Partnering with leading employers to improve outcomes for global workforces</p>
+                    <div class="btn-group">
+                        <a href="#contact" class="btn btn-primary">
+                            
+                            Book a demo
+                        </a>
+                        <a href="#benefits" class="btn btn-secondary">
+                            Explore our solutions
+                            
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/b924a9b4-fcc6-4731-9deb-c9f155064278.png?auth_key=1868539999-5717a36e708940548ed2a1306e747682-0-b2d867f64243bb273ffbd9d185908d10" alt="Family healthcare">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats section" id="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stats-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/1bb4e78e-86e5-4904-b897-a59cb341ff94.png?auth_key=1868539999-ede4eb01c37c4ce7bde3ef6394825ac8-0-5cdf7eb579ce835bc2809a26436efdec" alt="Employee with baby">
+                </div>
+                <div class="stats-content">
+                    <h2>Better care can't wait</h2>
+                    <p>Employees want and need support for their fertility and reproductive health needs.</p>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">57%</div>
+                        <div class="stat-text">of employees would or have switched jobs for better reproductive and family benefits</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">49%</div>
+                        <div class="stat-text">of LGBTQIA+ professionals wouldn't choose a company without LGBTQIA+-friendly benefits</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-text">of employees say menopause interferes with work weekly</div>
+                    </div>
+                    
+                    <div class="stat-source">Source: LinkedIn State of Family Health Benefits Report</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits section" id="benefits">
+        <div class="container">
+            <div class="benefits-container">
+                <div class="benefits-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/3b01b0ae-f740-4c69-b688-ddd556dcd325.png?auth_key=1868539999-11fc35d418cf4aab85a2380d210dd32b-0-175bde523d1b38fa9b5d698424706a79" alt="Family on sofa">
+                </div>
+                <div class="benefits-content">
+                    <h2>Improve outcomes for your workforce. Change the health of the world.</h2>
+                    <p>Provide exceptional care for your employees—and drive impactful business results for your organization.</p>
+                    
+                    <ul class="benefit-list">
+                        <li class="benefit-item">
+                            <h3>Drive better outcomes</h3>
+                            <p>Improve reproductive health care effectiveness while reducing costs</p>
+                        </li>
+                        <li class="benefit-item">
+                            <h3>Attract and retain talent</h3>
+                            <p>Offer comprehensive family benefits that employees value</p>
+                        </li>
+                        <li class="benefit-item">
+                            <h3>Achieve global benefits equity</h3>
+                            <p>Ensure consistent care quality across all locations</p>
+                        </li>
+                        <li class="benefit-item">
+                            <h3>Build an inclusive workplace</h3>
+                            <p>Support diverse family structures and needs</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact section" id="impact">
+        <div class="container">
+            <div class="impact-container">
+                <div class="impact-content">
+                    <h2>Making a real difference for your people and your business</h2>
+                    <p>A benefit that leads to healthier employees and better business outcomes</p>
+                    
+                    <ul class="impact-list">
+                        <li class="impact-item">
+                            <div class="impact-icon">
+                                
+                            </div>
+                            <div class="impact-text">
+                                <h3>C-section rates reduced by up to 15%</h3>
+                                <p>Lowering medical interventions and improving birth outcomes</p>
+                            </div>
+                        </li>
+                        <li class="impact-item">
+                            <div class="impact-icon">
+                                
+                            </div>
+                            <div class="impact-text">
+                                <h3>40%+ members received emotional support</h3>
+                                <p>Through Maven's one-on-one mental health counseling</p>
+                            </div>
+                        </li>
+                        <li class="impact-item">
+                            <div class="impact-icon">
+                                
+                            </div>
+                            <div class="impact-text">
+                                <h3>30% of members trying to conceive got pregnant</h3>
+                                <p>Without assisted reproductive technology</p>
+                            </div>
+                        </li>
+                        <li class="impact-item">
+                            <div class="impact-icon">
+                               
+                            </div>
+                            <div class="impact-text">
+                                <h3>96% of members are more loyal to their employer</h3>
+                                <p>After implementing Maven's family-building program</p>
+                            </div>
+                        </li>
+                        <li class="impact-item">
+                            <div class="impact-icon">
+                                
+                            </div>
+                            <div class="impact-text">
+                                <h3>94% of members say Maven helped them return to work</h3>
+                                <p>Or plan to return to work after family leave</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="impact-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/ce01281c-3154-4a22-83d5-9b596aafa1f0.png?auth_key=1868539999-314ceefeda2f42dfa32b0a65ddb39d9e-0-dc5a97d97d3d233feeaf2d6f74498f6c" alt="Parents with newborn">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section" id="contact">
+        <div class="container cta-container">
+            <h2>Let's deliver exceptional healthcare together</h2>
+            <p>Contact us to schedule a demo and learn how Maven can transform your family healthcare benefits.</p>
+            <a href="#" class="btn btn-primary">
+                Get in touch
+                
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Join Maven</h3>
+                    <ul>
+                        <li><a href="#">For Individuals</a></li>
+                        <li><a href="#">For Employers</a></li>
+                        <li><a href="#">For Health Plans</a></li>
+                        <li><a href="#">For Providers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Maven Programs</h3>
+                    <ul>
+                        <li><a href="#">Fertility & Family Building</a></li>
+                        <li><a href="#">Maternity & Parenting</a></li>
+                        <li><a href="#">Pediatrics</a></li>
+                        <li><a href="#">Menopause & Midlife</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Resource Library</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="copyright">
+              
+                <p>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+   
+
+    
+</body>
+</html>
